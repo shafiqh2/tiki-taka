@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     color: '#EF4444',
   },
   watchButton: {
-    backgroundColor: '#1A78F5',
+    backgroundColor: '#7291E1',
     borderRadius: 8,
     paddingVertical: 8,
     alignItems: 'center',

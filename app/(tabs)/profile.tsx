@@ -1,47 +1,44 @@
 import { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, Switch, useColorScheme } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, Switch } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Settings, Bell, Shield, CreditCard, Heart, LogOut, ChevronRight } from 'lucide-react-native';
 
 export default function ProfileScreen() {
-  const colorScheme = useColorScheme();
-  const isDark = colorScheme === 'dark';
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
 
   return (
-    <View style={[styles.container, isDark && styles.darkContainer]}>
-      <StatusBar style={isDark ? 'light' : 'dark'} />
+    <View style={styles.container}>
+      <StatusBar style="light" />
       
       <View style={styles.header}>
-        <Text style={[styles.headerTitle, isDark && styles.darkText]}>Profile</Text>
-        <TouchableOpacity style={[styles.settingsButton, isDark && styles.darkSettingsButton]}>
-          <Settings size={20} color={isDark ? '#E5E7EB' : '#6B7280'} />
+        <TouchableOpacity style={styles.settingsButton}>
+          <Settings size={20} color="#E5E7EB" />
         </TouchableOpacity>
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={[styles.profileCard, isDark && styles.darkProfileCard]}>
+        <View style={styles.profileCard}>
           <Image
             source={{ uri: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg' }}
             style={styles.profileAvatar}
           />
           <View style={styles.profileInfo}>
-            <Text style={[styles.profileName, isDark && styles.darkText]}>David Mitchell</Text>
-            <Text style={[styles.profileUsername, isDark && styles.darkSubText]}>@davidmitch</Text>
+            <Text style={styles.profileName}>David Mitchell</Text>
+            <Text style={styles.profileUsername}>@davidmitch</Text>
             <View style={styles.statsRow}>
               <View style={styles.statItem}>
-                <Text style={[styles.statValue, isDark && styles.darkText]}>1,250</Text>
-                <Text style={[styles.statLabel, isDark && styles.darkSubText]}>Points</Text>
+                <Text style={styles.statValue}>1,250</Text>
+                <Text style={styles.statLabel}>Points</Text>
               </View>
               <View style={styles.statDivider} />
               <View style={styles.statItem}>
-                <Text style={[styles.statValue, isDark && styles.darkText]}>8</Text>
-                <Text style={[styles.statLabel, isDark && styles.darkSubText]}>Communities</Text>
+                <Text style={styles.statValue}>8</Text>
+                <Text style={styles.statLabel}>Communities</Text>
               </View>
               <View style={styles.statDivider} />
               <View style={styles.statItem}>
-                <Text style={[styles.statValue, isDark && styles.darkText]}>24</Text>
-                <Text style={[styles.statLabel, isDark && styles.darkSubText]}>Predictions</Text>
+                <Text style={styles.statValue}>24</Text>
+                <Text style={styles.statLabel}>Predictions</Text>
               </View>
             </View>
           </View>
@@ -49,7 +46,7 @@ export default function ProfileScreen() {
 
         <View style={styles.teamsSection}>
           <View style={styles.sectionHeader}>
-            <Text style={[styles.sectionTitle, isDark && styles.darkText]}>Favorite Teams</Text>
+            <Text style={styles.sectionTitle}>Favorite Teams</Text>
             <TouchableOpacity>
               <Text style={styles.editText}>Edit</Text>
             </TouchableOpacity>
@@ -60,47 +57,47 @@ export default function ProfileScreen() {
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.teamsScrollContent}
           >
-            <View style={[styles.teamBadge, isDark && styles.darkTeamBadge]}>
+            <View style={styles.teamBadge}>
               <Image
-                source={{ uri: 'https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg' }}
+                source={{ uri: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Manchester_City_FC_badge.svg/100px-Manchester_City_FC_badge.png' }}
                 style={styles.teamLogo}
               />
-              <Text style={[styles.teamName, isDark && styles.darkText]}>Man City</Text>
+              <Text style={styles.teamName}>Man City</Text>
             </View>
-            <View style={[styles.teamBadge, isDark && styles.darkTeamBadge]}>
+            <View style={styles.teamBadge}>
               <Image
-                source={{ uri: 'https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg' }}
+                source={{ uri: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/100px-Real_Madrid_CF.png' }}
                 style={styles.teamLogo}
               />
-              <Text style={[styles.teamName, isDark && styles.darkText]}>Real Madrid</Text>
+              <Text style={styles.teamName}>Real Madrid</Text>
             </View>
-            <View style={[styles.teamBadge, isDark && styles.darkTeamBadge]}>
+            <View style={styles.teamBadge}>
               <Image
-                source={{ uri: 'https://upload.wikimedia.org/wikipedia/en/0/0c/Liverpool_FC.svg' }}
+                source={{ uri: 'https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Liverpool_FC.svg/100px-Liverpool_FC.png' }}
                 style={styles.teamLogo}
               />
-              <Text style={[styles.teamName, isDark && styles.darkText]}>Liverpool</Text>
+              <Text style={styles.teamName}>Liverpool</Text>
             </View>
-            <TouchableOpacity style={[styles.addTeamBadge, isDark && styles.darkAddTeamBadge]}>
+            <TouchableOpacity style={styles.addTeamBadge}>
               <Text style={styles.addTeamText}>+ Add</Text>
             </TouchableOpacity>
           </ScrollView>
         </View>
 
         <View style={styles.settingsSection}>
-          <Text style={[styles.sectionTitle, isDark && styles.darkText]}>Settings</Text>
+          <Text style={styles.sectionTitle}>Settings</Text>
           
-          <View style={[styles.settingCard, isDark && styles.darkSettingCard]}>
+          <View style={styles.settingCard}>
             <View style={styles.settingItem}>
               <View style={styles.settingIconContainer}>
-                <Bell size={20} color="#1A78F5" />
+                <Bell size={20} color="#7291E1" />
               </View>
-              <Text style={[styles.settingText, isDark && styles.darkText]}>Notifications</Text>
+              <Text style={styles.settingText}>Notifications</Text>
               <Switch
                 value={notificationsEnabled}
                 onValueChange={setNotificationsEnabled}
                 trackColor={{ false: '#D1D5DB', true: '#93C5FD' }}
-                thumbColor={notificationsEnabled ? '#1A78F5' : '#F3F4F6'}
+                thumbColor={notificationsEnabled ? '#7291E1' : '#F3F4F6'}
               />
             </View>
             
@@ -108,24 +105,24 @@ export default function ProfileScreen() {
               <View style={styles.settingIconContainer}>
                 <Shield size={20} color="#00AF41" />
               </View>
-              <Text style={[styles.settingText, isDark && styles.darkText]}>Privacy</Text>
-              <ChevronRight size={20} color={isDark ? '#E5E7EB' : '#9CA3AF'} />
+              <Text style={styles.settingText}>Privacy</Text>
+              <ChevronRight size={20} color="#E5E7EB" />
             </TouchableOpacity>
             
             <TouchableOpacity style={styles.settingItem}>
               <View style={styles.settingIconContainer}>
                 <CreditCard size={20} color="#F59E0B" />
               </View>
-              <Text style={[styles.settingText, isDark && styles.darkText]}>Payment Methods</Text>
-              <ChevronRight size={20} color={isDark ? '#E5E7EB' : '#9CA3AF'} />
+              <Text style={styles.settingText}>Payment Methods</Text>
+              <ChevronRight size={20} color="#E5E7EB" />
             </TouchableOpacity>
             
             <TouchableOpacity style={styles.settingItem}>
               <View style={styles.settingIconContainer}>
                 <Heart size={20} color="#E31B23" />
               </View>
-              <Text style={[styles.settingText, isDark && styles.darkText]}>Favorite Teams</Text>
-              <ChevronRight size={20} color={isDark ? '#E5E7EB' : '#9CA3AF'} />
+              <Text style={styles.settingText}>Favorite Teams</Text>
+              <ChevronRight size={20} color="#E5E7EB" />
             </TouchableOpacity>
             
             <TouchableOpacity style={[styles.settingItem, styles.noBorder]}>
@@ -146,42 +143,25 @@ export default function ProfileScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F7FA',
-    paddingHorizontal: 16,
-  },
-  darkContainer: {
     backgroundColor: '#121212',
+    paddingHorizontal: 16,
   },
   header: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     alignItems: 'center',
     paddingVertical: 16,
-  },
-  headerTitle: {
-    fontSize: 24,
-    fontWeight: '700',
-    color: '#1F2937',
-  },
-  darkText: {
-    color: '#FFFFFF',
-  },
-  darkSubText: {
-    color: '#E5E7EB',
   },
   settingsButton: {
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#F3F4F6',
+    backgroundColor: '#333333',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  darkSettingsButton: {
-    backgroundColor: '#333333',
-  },
   profileCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#1E1E1E',
     borderRadius: 12,
     padding: 16,
     marginBottom: 24,
@@ -191,9 +171,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.05,
     shadowRadius: 8,
     elevation: 2,
-  },
-  darkProfileCard: {
-    backgroundColor: '#1E1E1E',
   },
   profileAvatar: {
     width: 80,
@@ -207,12 +184,12 @@ const styles = StyleSheet.create({
   profileName: {
     fontSize: 20,
     fontWeight: '700',
-    color: '#1F2937',
+    color: '#FFFFFF',
     marginBottom: 4,
   },
   profileUsername: {
     fontSize: 14,
-    color: '#6B7280',
+    color: '#E5E7EB',
     marginBottom: 16,
   },
   statsRow: {
@@ -227,17 +204,17 @@ const styles = StyleSheet.create({
   statValue: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#1F2937',
+    color: '#FFFFFF',
   },
   statLabel: {
     fontSize: 12,
-    color: '#6B7280',
+    color: '#E5E7EB',
     marginTop: 2,
   },
   statDivider: {
     width: 1,
     height: 24,
-    backgroundColor: '#E5E7EB',
+    backgroundColor: '#333333',
   },
   teamsSection: {
     marginBottom: 24,
@@ -251,17 +228,17 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#1F2937',
+    color: '#FFFFFF',
   },
   editText: {
     fontSize: 14,
-    color: '#1A78F5',
+    color: '#7291E1',
   },
   teamsScrollContent: {
     paddingRight: 16,
   },
   teamBadge: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#1E1E1E',
     borderRadius: 12,
     padding: 12,
     alignItems: 'center',
@@ -272,9 +249,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.05,
     shadowRadius: 8,
     elevation: 2,
-  },
-  darkTeamBadge: {
-    backgroundColor: '#1E1E1E',
   },
   teamLogo: {
     width: 48,
@@ -284,10 +258,10 @@ const styles = StyleSheet.create({
   teamName: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#1F2937',
+    color: '#FFFFFF',
   },
   addTeamBadge: {
-    backgroundColor: '#F3F4F6',
+    backgroundColor: '#333333',
     borderRadius: 12,
     padding: 12,
     alignItems: 'center',
@@ -295,19 +269,16 @@ const styles = StyleSheet.create({
     width: 100,
     height: 92,
   },
-  darkAddTeamBadge: {
-    backgroundColor: '#333333',
-  },
   addTeamText: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#1A78F5',
+    color: '#7291E1',
   },
   settingsSection: {
     marginBottom: 24,
   },
   settingCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#1E1E1E',
     borderRadius: 12,
     marginTop: 12,
     shadowColor: '#000',
@@ -316,15 +287,12 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 2,
   },
-  darkSettingCard: {
-    backgroundColor: '#1E1E1E',
-  },
   settingItem: {
     flexDirection: 'row',
     alignItems: 'center',
     padding: 16,
     borderBottomWidth: 1,
-    borderBottomColor: '#F3F4F6',
+    borderBottomColor: '#333333',
   },
   noBorder: {
     borderBottomWidth: 0,
@@ -333,19 +301,19 @@ const styles = StyleSheet.create({
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: '#EBF5FF',
+    backgroundColor: '#2A2A2A',
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 12,
   },
   logoutIcon: {
-    backgroundColor: '#FEE2E2',
+    backgroundColor: '#2A1A1A',
   },
   settingText: {
     flex: 1,
     fontSize: 16,
     fontWeight: '500',
-    color: '#1F2937',
+    color: '#FFFFFF',
   },
   logoutText: {
     flex: 1,

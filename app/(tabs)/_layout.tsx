@@ -1,24 +1,26 @@
 import { Tabs } from 'expo-router';
-import { useColorScheme } from 'react-native';
-import { Chrome as Home, Trophy, Gift, MessageSquare, User } from 'lucide-react-native';
+import { Home, Trophy, Gift, MessageSquare, User } from 'lucide-react-native';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+  // Force dark theme instead of using system color scheme
+  const isDark = true;
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: '#1A78F5',
-        tabBarInactiveTintColor: colorScheme === 'dark' ? '#919191' : '#6B7280',
+        tabBarActiveTintColor: '#7291E1',
+        tabBarInactiveTintColor: '#919191',
         tabBarStyle: {
-          backgroundColor: colorScheme === 'dark' ? '#121212' : '#FFFFFF',
+          backgroundColor: '#121212',
+          borderTopColor: '#333333',
+          borderTopWidth: 1,
         },
         headerShown: true,
         headerStyle: {
-          backgroundColor: colorScheme === 'dark' ? '#121212' : '#FFFFFF',
+          backgroundColor: '#121212',
         },
         headerTitleStyle: {
-          color: colorScheme === 'dark' ? '#FFFFFF' : '#1F2937',
+          color: '#FFFFFF',
           fontWeight: '600',
         },
       }}>

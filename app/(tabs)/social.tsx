@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, TextInput, FlatList, useColorScheme } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, TextInput, FlatList } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Search, MessageCircle, Heart, Share2, ChevronRight } from 'lucide-react-native';
 import { Post } from '../../components/Post';
@@ -7,37 +7,23 @@ import { CommunityCard } from '../../components/CommunityCard';
 import { mockPosts, mockCommunities } from '../../data/mockData';
 
 export default function SocialScreen() {
-  const colorScheme = useColorScheme();
-  const isDark = colorScheme === 'dark';
   const [selectedTab, setSelectedTab] = useState('feed');
 
   return (
-    <View style={[styles.container, isDark && styles.darkContainer]}>
-      <StatusBar style={isDark ? 'light' : 'dark'} />
-      
-      <View style={styles.header}>
-        <Text style={[styles.headerTitle, isDark && styles.darkText]}>Social</Text>
-        <TouchableOpacity style={[styles.searchButton, isDark && styles.darkSearchButton]}>
-          <Search size={20} color={isDark ? '#E5E7EB' : '#6B7280'} />
-        </TouchableOpacity>
-      </View>
-
+    <View style={styles.container}>
+      <StatusBar style="light" />
       <View style={styles.tabsContainer}>
         <TouchableOpacity 
           style={[
             styles.tab, 
-            selectedTab === 'feed' && styles.selectedTab,
-            isDark && styles.darkTab,
-            selectedTab === 'feed' && isDark && styles.darkSelectedTab
+            selectedTab === 'feed' && styles.selectedTab
           ]}
           onPress={() => setSelectedTab('feed')}
         >
           <Text 
             style={[
               styles.tabText, 
-              selectedTab === 'feed' && styles.selectedTabText,
-              isDark && styles.darkTabText,
-              selectedTab === 'feed' && isDark && styles.darkSelectedTabText
+              selectedTab === 'feed' && styles.selectedTabText
             ]}
           >
             Feed
@@ -46,18 +32,14 @@ export default function SocialScreen() {
         <TouchableOpacity 
           style={[
             styles.tab, 
-            selectedTab === 'communities' && styles.selectedTab,
-            isDark && styles.darkTab,
-            selectedTab === 'communities' && isDark && styles.darkSelectedTab
+            selectedTab === 'communities' && styles.selectedTab
           ]}
           onPress={() => setSelectedTab('communities')}
         >
           <Text 
             style={[
               styles.tabText, 
-              selectedTab === 'communities' && styles.selectedTabText,
-              isDark && styles.darkTabText,
-              selectedTab === 'communities' && isDark && styles.darkSelectedTabText
+              selectedTab === 'communities' && styles.selectedTabText
             ]}
           >
             Communities
@@ -69,17 +51,17 @@ export default function SocialScreen() {
         <FlatList
           data={mockPosts}
           keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => <Post post={item} isDark={isDark} />}
+          renderItem={({ item }) => <Post post={item} isDark={true} />}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.postsList}
           ListHeaderComponent={
-            <View style={[styles.createPostCard, isDark && styles.darkCreatePostCard]}>
+            <View style={styles.createPostCard}>
               <Image
                 source={{ uri: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg' }}
                 style={styles.userAvatar}
               />
-              <TouchableOpacity style={[styles.postInput, isDark && styles.darkPostInput]}>
-                <Text style={[styles.postInputPlaceholder, isDark && styles.darkSubText]}>
+              <TouchableOpacity style={styles.postInput}>
+                <Text style={styles.postInputPlaceholder}>
                   What's on your mind?
                 </Text>
               </TouchableOpacity>
@@ -89,13 +71,13 @@ export default function SocialScreen() {
       ) : (
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.communitiesSection}>
-            <Text style={[styles.sectionTitle, isDark && styles.darkText]}>Your Communities</Text>
+            <Text style={styles.sectionTitle}>Your Communities</Text>
             
             {mockCommunities.map((community, index) => (
               <CommunityCard 
                 key={index} 
                 community={community}
-                isDark={isDark}
+                isDark={true}
               />
             ))}
             
@@ -114,11 +96,8 @@ export default function SocialScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F7FA',
-    paddingHorizontal: 16,
-  },
-  darkContainer: {
     backgroundColor: '#121212',
+    paddingHorizontal: 16,
   },
   header: {
     flexDirection: 'row',
@@ -129,32 +108,20 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 24,
     fontWeight: '700',
-    color: '#1F2937',
-  },
-  darkText: {
     color: '#FFFFFF',
-  },
-  darkSubText: {
-    color: '#E5E7EB',
   },
   searchButton: {
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#F3F4F6',
+    backgroundColor: '#333333',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  darkSearchButton: {
-    backgroundColor: '#333333',
   },
   tabsContainer: {
     flexDirection: 'row',
     marginBottom: 16,
     borderBottomWidth: 1,
-    borderBottomColor: '#E5E7EB',
-  },
-  darkTab: {
     borderBottomColor: '#333333',
   },
   tab: {
@@ -164,28 +131,19 @@ const styles = StyleSheet.create({
   },
   selectedTab: {
     borderBottomWidth: 2,
-    borderBottomColor: '#1A78F5',
-  },
-  darkSelectedTab: {
-    borderBottomColor: '#1A78F5',
+    borderBottomColor: '#7291E1',
   },
   tabText: {
     fontSize: 16,
     fontWeight: '500',
-    color: '#6B7280',
-  },
-  selectedTabText: {
-    color: '#1A78F5',
-    fontWeight: '600',
-  },
-  darkTabText: {
     color: '#E5E7EB',
   },
-  darkSelectedTabText: {
-    color: '#1A78F5',
+  selectedTabText: {
+    color: '#7291E1',
+    fontWeight: '600',
   },
   createPostCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#1E1E1E',
     borderRadius: 12,
     padding: 16,
     flexDirection: 'row',
@@ -197,9 +155,6 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 2,
   },
-  darkCreatePostCard: {
-    backgroundColor: '#1E1E1E',
-  },
   userAvatar: {
     width: 40,
     height: 40,
@@ -208,16 +163,13 @@ const styles = StyleSheet.create({
   },
   postInput: {
     flex: 1,
-    backgroundColor: '#F3F4F6',
+    backgroundColor: '#333333',
     borderRadius: 20,
     paddingHorizontal: 16,
     paddingVertical: 8,
   },
-  darkPostInput: {
-    backgroundColor: '#333333',
-  },
   postInputPlaceholder: {
-    color: '#6B7280',
+    color: '#E5E7EB',
   },
   postsList: {
     paddingBottom: 16,
@@ -228,11 +180,11 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#1F2937',
+    color: '#FFFFFF',
     marginBottom: 12,
   },
   discoverButton: {
-    backgroundColor: '#1A78F5',
+    backgroundColor: '#7291E1',
     paddingVertical: 12,
     borderRadius: 8,
     alignItems: 'center',

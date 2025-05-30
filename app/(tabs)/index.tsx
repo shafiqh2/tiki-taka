@@ -26,17 +26,16 @@ export default function HomeScreen() {
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
       
       {/* Header */}
       <View style={styles.header}>
         <View>
-          <Text style={styles.logo}>Tiki Taka</Text>
           <Text style={styles.tagline}>Play. Predict. Win.</Text>
         </View>
         <View style={styles.headerRight}>
           <TouchableOpacity style={styles.notificationButton}>
-            <Bell size={24} color="#1F2937" />
+            <Bell size={24} color="#E5E7EB" />
             <View style={styles.notificationBadge} />
           </TouchableOpacity>
           <Image
@@ -49,7 +48,7 @@ export default function HomeScreen() {
       {/* League Selector */}
       <TouchableOpacity style={styles.leagueSelector}>
         <Text style={styles.leagueSelectorText}>Premier League</Text>
-        <ChevronDown size={20} color="#6B7280" />
+        <ChevronDown size={20} color="#9CA3AF" />
       </TouchableOpacity>
 
       {/* Featured Match */}
@@ -58,7 +57,7 @@ export default function HomeScreen() {
         <View style={styles.matchDetails}>
           <View style={styles.team}>
             <Image
-              source={{ uri: 'https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg' }}
+              source={{ uri: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Manchester_City_FC_badge.svg/100px-Manchester_City_FC_badge.png' }}
               style={styles.teamLogo}
             />
             <Text style={styles.teamName}>Man City</Text>
@@ -72,7 +71,7 @@ export default function HomeScreen() {
           </View>
           <View style={styles.team}>
             <Image
-              source={{ uri: 'https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg' }}
+              source={{ uri: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/53/Arsenal_FC.svg/100px-Arsenal_FC.png' }}
               style={styles.teamLogo}
             />
             <Text style={styles.teamName}>Arsenal</Text>
@@ -89,7 +88,7 @@ export default function HomeScreen() {
           <Text style={styles.sectionTitle}>Latest News</Text>
           <TouchableOpacity style={styles.viewAllButton}>
             <Text style={styles.viewAllText}>View All</Text>
-            <ChevronRight size={16} color="#1A78F5" />
+            <ChevronRight size={16} color="#7291E1" />
           </TouchableOpacity>
         </View>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -119,7 +118,7 @@ export default function HomeScreen() {
           <Text style={styles.sectionTitle}>Weekly Leaderboard</Text>
           <TouchableOpacity style={styles.viewAllButton}>
             <Text style={styles.viewAllText}>View All</Text>
-            <ChevronRight size={16} color="#1A78F5" />
+            <ChevronRight size={16} color="#7291E1" />
           </TouchableOpacity>
         </View>
         <View style={styles.leaderboard}>
@@ -148,7 +147,7 @@ export default function HomeScreen() {
             <Text style={styles.playNow}>Play Now</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.gameCard}>
-            <Users size={24} color="#1A78F5" />
+            <Users size={24} color="#7291E1" />
             <Text style={styles.gameTitle}>Prediction Duel</Text>
             <Text style={styles.gameDescription}>Challenge other fans</Text>
             <Text style={styles.playNow}>Play Now</Text>
@@ -178,7 +177,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F7FA',
+    backgroundColor: '#121212',
   },
   header: {
     flexDirection: 'row',
@@ -191,11 +190,11 @@ const styles = StyleSheet.create({
   logo: {
     fontSize: 24,
     fontWeight: '700',
-    color: '#1F2937',
+    color: '#FFFFFF',
   },
   tagline: {
     fontSize: 14,
-    color: '#6B7280',
+    color: '#9CA3AF',
   },
   headerRight: {
     flexDirection: 'row',
@@ -205,7 +204,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#F3F4F6',
+    backgroundColor: '#333333',
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 12,
@@ -227,14 +226,14 @@ const styles = StyleSheet.create({
   leagueSelector: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#1E1E1E',
     marginHorizontal: 16,
     marginTop: 16,
     padding: 12,
     borderRadius: 12,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
+    shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 2,
   },
@@ -242,22 +241,22 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 16,
     fontWeight: '500',
-    color: '#1F2937',
+    color: '#FFFFFF',
   },
   featuredMatch: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#1E1E1E',
     margin: 16,
     padding: 16,
     borderRadius: 12,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
+    shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 2,
   },
   featuredLabel: {
     fontSize: 14,
-    color: '#6B7280',
+    color: '#9CA3AF',
     marginBottom: 12,
   },
   matchDetails: {
@@ -278,7 +277,7 @@ const styles = StyleSheet.create({
   teamName: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#1F2937',
+    color: '#FFFFFF',
     textAlign: 'center',
   },
   matchInfo: {
@@ -287,7 +286,7 @@ const styles = StyleSheet.create({
   matchTime: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#1F2937',
+    color: '#FFFFFF',
     marginBottom: 4,
   },
   timer: {
@@ -305,7 +304,7 @@ const styles = StyleSheet.create({
     marginLeft: 4,
   },
   predictButton: {
-    backgroundColor: '#1A78F5',
+    backgroundColor: '#7291E1',
     paddingVertical: 12,
     borderRadius: 8,
     alignItems: 'center',
@@ -328,7 +327,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#1F2937',
+    color: '#FFFFFF',
   },
   viewAllButton: {
     flexDirection: 'row',
@@ -336,18 +335,18 @@ const styles = StyleSheet.create({
   },
   viewAllText: {
     fontSize: 14,
-    color: '#1A78F5',
+    color: '#7291E1',
     marginRight: 4,
   },
   newsCard: {
     width: 280,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#1E1E1E',
     borderRadius: 12,
     marginRight: 12,
     overflow: 'hidden',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
+    shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 2,
   },
@@ -361,7 +360,7 @@ const styles = StyleSheet.create({
   newsTitle: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#1F2937',
+    color: '#FFFFFF',
     marginBottom: 8,
   },
   newsFooter: {
@@ -370,19 +369,19 @@ const styles = StyleSheet.create({
   },
   newsSource: {
     fontSize: 12,
-    color: '#6B7280',
+    color: '#9CA3AF',
   },
   newsTime: {
     fontSize: 12,
-    color: '#6B7280',
+    color: '#9CA3AF',
   },
   leaderboard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#1E1E1E',
     borderRadius: 12,
     padding: 16,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
+    shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 2,
   },
@@ -391,13 +390,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 8,
     borderBottomWidth: 1,
-    borderBottomColor: '#F3F4F6',
+    borderBottomColor: '#333333',
   },
   rank: {
     width: 24,
     fontSize: 16,
     fontWeight: '600',
-    color: '#6B7280',
+    color: '#9CA3AF',
   },
   firstRank: {
     color: '#F59E0B',
@@ -412,12 +411,12 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 14,
     fontWeight: '500',
-    color: '#1F2937',
+    color: '#FFFFFF',
   },
   points: {
     fontSize: 14,
     fontWeight: '600',
-    color: '#1A78F5',
+    color: '#7291E1',
   },
   gamesGrid: {
     flexDirection: 'row',
@@ -426,43 +425,43 @@ const styles = StyleSheet.create({
   },
   gameCard: {
     width: '48%',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#1E1E1E',
     borderRadius: 12,
     padding: 16,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
+    shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 2,
   },
   gameTitle: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#1F2937',
+    color: '#FFFFFF',
     marginTop: 12,
     marginBottom: 4,
   },
   gameDescription: {
     fontSize: 14,
-    color: '#6B7280',
+    color: '#9CA3AF',
     marginBottom: 12,
   },
   playNow: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#1A78F5',
+    color: '#7291E1',
   },
   fanZone: {
     marginTop: 24,
   },
   fanZoneContent: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#1E1E1E',
     borderRadius: 12,
     padding: 16,
     marginTop: 12,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
+    shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 2,
   },
@@ -473,14 +472,14 @@ const styles = StyleSheet.create({
   },
   activeUsers: {
     fontSize: 14,
-    color: '#1F2937',
+    color: '#FFFFFF',
   },
   discussions: {
     fontSize: 14,
-    color: '#1F2937',
+    color: '#FFFFFF',
   },
   joinButton: {
-    backgroundColor: '#1A78F5',
+    backgroundColor: '#7291E1',
     paddingVertical: 12,
     borderRadius: 8,
     alignItems: 'center',

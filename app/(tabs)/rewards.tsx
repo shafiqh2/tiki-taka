@@ -1,36 +1,29 @@
 import { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, useColorScheme } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Gift, ChevronRight, Tag, ShoppingBag, Ticket, Coins } from 'lucide-react-native';
 import { RewardCard } from '../../components/RewardCard';
 import { mockRewards } from '../../data/mockData';
 
 export default function RewardsScreen() {
-  const colorScheme = useColorScheme();
-  const isDark = colorScheme === 'dark';
   const [selectedCategory, setSelectedCategory] = useState('All');
   const categories = ['All', 'Merchandise', 'Tickets', 'Digital'];
 
   return (
-    <View style={[styles.container, isDark && styles.darkContainer]}>
-      <StatusBar style={isDark ? 'light' : 'dark'} />
-      
-      <View style={styles.header}>
-        <Text style={[styles.headerTitle, isDark && styles.darkText]}>Rewards</Text>
-      </View>
-
-      <View style={[styles.pointsCard, isDark && styles.darkPointsCard]}>
+    <View style={styles.container}>
+      <StatusBar style="light" />
+      <View style={styles.pointsCard}>
         <View style={styles.pointsContent}>
           <View>
-            <Text style={[styles.pointsLabel, isDark && styles.darkSubText]}>Your Points Balance</Text>
+            <Text style={styles.pointsLabel}>Your Points Balance</Text>
             <View style={styles.pointsRow}>
               <Coins size={24} color="#F59E0B" />
-              <Text style={[styles.pointsValue, isDark && styles.darkText]}>2,450</Text>
+              <Text style={styles.pointsValue}>2,450</Text>
             </View>
           </View>
           <TouchableOpacity style={styles.historyButton}>
             <Text style={styles.historyButtonText}>History</Text>
-            <ChevronRight size={16} color="#1A78F5" />
+            <ChevronRight size={16} color="#7291E1" />
           </TouchableOpacity>
         </View>
       </View>
@@ -46,18 +39,14 @@ export default function RewardsScreen() {
             key={category}
             style={[
               styles.categoryButton, 
-              selectedCategory === category && styles.selectedCategoryButton,
-              isDark && styles.darkCategoryButton,
-              selectedCategory === category && isDark && styles.darkSelectedCategoryButton
+              selectedCategory === category && styles.selectedCategoryButton
             ]}
             onPress={() => setSelectedCategory(category)}
           >
             <Text 
               style={[
                 styles.categoryButtonText, 
-                selectedCategory === category && styles.selectedCategoryButtonText,
-                isDark && styles.darkCategoryButtonText,
-                selectedCategory === category && isDark && styles.darkSelectedCategoryButtonText
+                selectedCategory === category && styles.selectedCategoryButtonText
               ]}
             >
               {category}
@@ -72,22 +61,22 @@ export default function RewardsScreen() {
             <RewardCard 
               key={index} 
               reward={reward}
-              isDark={isDark}
+              isDark={true}
             />
           ))}
         </View>
         
         <View style={styles.dailyRewardsSection}>
-          <Text style={[styles.sectionTitle, isDark && styles.darkText]}>Daily Rewards</Text>
+          <Text style={styles.sectionTitle}>Daily Rewards</Text>
           
-          <View style={[styles.dailyRewardCard, isDark && styles.darkDailyRewardCard]}>
+          <View style={styles.dailyRewardCard}>
             <View style={styles.dailyRewardContent}>
               <View style={styles.dailyRewardIcon}>
                 <Gift size={24} color="#FFFFFF" />
               </View>
               <View style={styles.dailyRewardInfo}>
-                <Text style={[styles.dailyRewardTitle, isDark && styles.darkText]}>Daily Login Bonus</Text>
-                <Text style={[styles.dailyRewardDescription, isDark && styles.darkSubText]}>Claim your 50 points for today!</Text>
+                <Text style={styles.dailyRewardTitle}>Daily Login Bonus</Text>
+                <Text style={styles.dailyRewardDescription}>Claim your 50 points for today!</Text>
               </View>
             </View>
             <TouchableOpacity style={styles.claimButton}>
@@ -105,11 +94,8 @@ export default function RewardsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F7FA',
-    paddingHorizontal: 16,
-  },
-  darkContainer: {
     backgroundColor: '#121212',
+    paddingHorizontal: 16,
   },
   header: {
     paddingVertical: 16,
@@ -117,16 +103,10 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 24,
     fontWeight: '700',
-    color: '#1F2937',
-  },
-  darkText: {
     color: '#FFFFFF',
   },
-  darkSubText: {
-    color: '#E5E7EB',
-  },
   pointsCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#1E1E1E',
     borderRadius: 12,
     padding: 16,
     marginBottom: 16,
@@ -136,9 +116,6 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 2,
   },
-  darkPointsCard: {
-    backgroundColor: '#1E1E1E',
-  },
   pointsContent: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -146,7 +123,7 @@ const styles = StyleSheet.create({
   },
   pointsLabel: {
     fontSize: 14,
-    color: '#6B7280',
+    color: '#E5E7EB',
     marginBottom: 4,
   },
   pointsRow: {
@@ -156,7 +133,7 @@ const styles = StyleSheet.create({
   pointsValue: {
     fontSize: 24,
     fontWeight: '700',
-    color: '#1F2937',
+    color: '#FFFFFF',
     marginLeft: 8,
   },
   historyButton: {
@@ -166,7 +143,7 @@ const styles = StyleSheet.create({
   historyButtonText: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#1A78F5',
+    color: '#7291E1',
     marginRight: 4,
   },
   categorySelector: {
@@ -179,31 +156,19 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 8,
     borderRadius: 20,
-    backgroundColor: '#F3F4F6',
+    backgroundColor: '#333333',
     marginRight: 8,
   },
   selectedCategoryButton: {
-    backgroundColor: '#1A78F5',
-  },
-  darkCategoryButton: {
-    backgroundColor: '#333333',
-  },
-  darkSelectedCategoryButton: {
-    backgroundColor: '#1A78F5',
+    backgroundColor: '#7291E1',
   },
   categoryButtonText: {
     fontSize: 14,
-    color: '#6B7280',
+    color: '#E5E7EB',
   },
   selectedCategoryButtonText: {
     color: '#FFFFFF',
     fontWeight: '600',
-  },
-  darkCategoryButtonText: {
-    color: '#E5E7EB',
-  },
-  darkSelectedCategoryButtonText: {
-    color: '#FFFFFF',
   },
   rewardsGrid: {
     flexDirection: 'row',
@@ -216,11 +181,11 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#1F2937',
+    color: '#FFFFFF',
     marginBottom: 12,
   },
   dailyRewardCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#1E1E1E',
     borderRadius: 12,
     padding: 16,
     flexDirection: 'row',
@@ -231,9 +196,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.05,
     shadowRadius: 8,
     elevation: 2,
-  },
-  darkDailyRewardCard: {
-    backgroundColor: '#1E1E1E',
   },
   dailyRewardContent: {
     flexDirection: 'row',
@@ -254,15 +216,15 @@ const styles = StyleSheet.create({
   dailyRewardTitle: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#1F2937',
+    color: '#FFFFFF',
     marginBottom: 2,
   },
   dailyRewardDescription: {
     fontSize: 14,
-    color: '#6B7280',
+    color: '#E5E7EB',
   },
   claimButton: {
-    backgroundColor: '#1A78F5',
+    backgroundColor: '#7291E1',
     paddingHorizontal: 16,
     paddingVertical: 8,
     borderRadius: 8,

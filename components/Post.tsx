@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     width: 14,
     height: 14,
     borderRadius: 7,
-    backgroundColor: '#1A78F5',
+    backgroundColor: '#7291E1',
   },
   timeText: {
     fontSize: 12,

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, useColorScheme } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Crown, Award, Grid2x2X as Grid2X2, BrainCircuit } from 'lucide-react-native';
 import { GameCard } from '../../components/GameCard';
@@ -7,24 +7,19 @@ import { LeaderboardItem } from '../../components/LeaderboardItem';
 import { mockLeaderboard } from '../../data/mockData';
 
 export default function GamesScreen() {
-  const colorScheme = useColorScheme();
-  const isDark = colorScheme === 'dark';
+  // Force dark theme
+  const isDark = true;
 
   return (
-    <View style={[styles.container, isDark && styles.darkContainer]}>
-      <StatusBar style={isDark ? 'light' : 'dark'} />
-      
-      <View style={styles.header}>
-        <Text style={[styles.headerTitle, isDark && styles.darkText]}>Games</Text>
-      </View>
-
+    <View style={styles.container}>
+      <StatusBar style="light" />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.gamesGrid}>
           <GameCard 
             title="Score Predictions" 
             description="Predict match outcomes and win points"
             icon={<Crown size={24} color="#FFFFFF" />}
-            color="#1A78F5"
+            color="#7291E1"
             isDark={isDark}
           />
           <GameCard 
@@ -51,13 +46,13 @@ export default function GamesScreen() {
         </View>
         
         <View style={styles.leaderboardSection}>
-          <Text style={[styles.sectionTitle, isDark && styles.darkText]}>Weekly Leaderboard</Text>
+          <Text style={styles.sectionTitle}>Weekly Leaderboard</Text>
           
-          <View style={[styles.leaderboardCard, isDark && styles.darkLeaderboardCard]}>
+          <View style={styles.leaderboardCard}>
             <View style={styles.leaderboardHeader}>
-              <Text style={[styles.leaderboardHeaderText, isDark && styles.darkText]}>Rank</Text>
-              <Text style={[styles.leaderboardHeaderText, isDark && styles.darkText]}>Player</Text>
-              <Text style={[styles.leaderboardHeaderText, isDark && styles.darkText]}>Points</Text>
+              <Text style={styles.leaderboardHeaderText}>Rank</Text>
+              <Text style={styles.leaderboardHeaderText}>Player</Text>
+              <Text style={styles.leaderboardHeaderText}>Points</Text>
             </View>
             
             {mockLeaderboard.map((item, index) => (
@@ -71,17 +66,17 @@ export default function GamesScreen() {
         </View>
         
         <View style={styles.upcomingChallengesSection}>
-          <Text style={[styles.sectionTitle, isDark && styles.darkText]}>Upcoming Challenges</Text>
+          <Text style={styles.sectionTitle}>Upcoming Challenges</Text>
           
-          <View style={[styles.challengeCard, isDark && styles.darkChallengeCard]}>
+          <View style={styles.challengeCard}>
             <View style={styles.challengeHeader}>
-              <Text style={[styles.challengeTitle, isDark && styles.darkText]}>Weekend Special</Text>
+              <Text style={styles.challengeTitle}>Weekend Special</Text>
               <View style={styles.challengeBadge}>
                 <Text style={styles.challengeBadgeText}>2X POINTS</Text>
               </View>
             </View>
             
-            <Text style={[styles.challengeDescription, isDark && styles.darkSubText]}>
+            <Text style={styles.challengeDescription}>
               Predict all Premier League matches this weekend for double points!
             </Text>
             
@@ -100,11 +95,8 @@ export default function GamesScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F7FA',
-    paddingHorizontal: 16,
-  },
-  darkContainer: {
     backgroundColor: '#121212',
+    paddingHorizontal: 16,
   },
   header: {
     paddingVertical: 16,
@@ -112,13 +104,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 24,
     fontWeight: '700',
-    color: '#1F2937',
-  },
-  darkText: {
     color: '#FFFFFF',
-  },
-  darkSubText: {
-    color: '#E5E7EB',
   },
   gamesGrid: {
     flexDirection: 'row',
@@ -132,34 +118,31 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#1F2937',
+    color: '#FFFFFF',
     marginBottom: 12,
   },
   leaderboardCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#1E1E1E',
     borderRadius: 12,
     padding: 16,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
+    shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 2,
-  },
-  darkLeaderboardCard: {
-    backgroundColor: '#1E1E1E',
   },
   leaderboardHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingBottom: 8,
     borderBottomWidth: 1,
-    borderBottomColor: '#F3F4F6',
+    borderBottomColor: '#333333',
     marginBottom: 8,
   },
   leaderboardHeaderText: {
     fontSize: 14,
     fontWeight: '600',
-    color: '#6B7280',
+    color: '#9CA3AF',
   },
   viewMoreButton: {
     alignItems: 'center',
@@ -169,23 +152,20 @@ const styles = StyleSheet.create({
   viewMoreText: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#1A78F5',
+    color: '#7291E1',
   },
   upcomingChallengesSection: {
     marginTop: 24,
   },
   challengeCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#1E1E1E',
     borderRadius: 12,
     padding: 16,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
+    shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 2,
-  },
-  darkChallengeCard: {
-    backgroundColor: '#1E1E1E',
   },
   challengeHeader: {
     flexDirection: 'row',
@@ -196,7 +176,7 @@ const styles = StyleSheet.create({
   challengeTitle: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#1F2937',
+    color: '#FFFFFF',
   },
   challengeBadge: {
     backgroundColor: '#FFEDD5',
@@ -211,11 +191,11 @@ const styles = StyleSheet.create({
   },
   challengeDescription: {
     fontSize: 14,
-    color: '#6B7280',
+    color: '#E5E7EB',
     marginBottom: 16,
   },
   joinChallengeButton: {
-    backgroundColor: '#1A78F5',
+    backgroundColor: '#7291E1',
     paddingVertical: 10,
     borderRadius: 8,
     alignItems: 'center',
