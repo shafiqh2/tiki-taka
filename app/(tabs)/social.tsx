@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
   },
   selectedTab: {
     borderBottomWidth: 2,
-    borderBottomColor: '#7291E1',
+    borderBottomColor: '#33efff',
   },
   tabText: {
     fontSize: 16,
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     color: '#E5E7EB',
   },
   selectedTabText: {
-    color: '#7291E1',
+    color: '#33efff',
     fontWeight: '600',
   },
   createPostCard: {
@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   discoverButton: {
-    backgroundColor: '#7291E1',
+    backgroundColor: '#33efff',
     paddingVertical: 12,
     borderRadius: 8,
     alignItems: 'center',

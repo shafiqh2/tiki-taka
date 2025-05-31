@@ -23,7 +23,7 @@ export default function RewardsScreen() {
           </View>
           <TouchableOpacity style={styles.historyButton}>
             <Text style={styles.historyButtonText}>History</Text>
-            <ChevronRight size={16} color="#7291E1" />
+            <ChevronRight size={16} color="#33efff" />
           </TouchableOpacity>
         </View>
       </View>
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
   historyButtonText: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#7291E1',
+    color: '#33efff',
     marginRight: 4,
   },
   categorySelector: {
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   selectedCategoryButton: {
-    backgroundColor: '#7291E1',
+    backgroundColor: '#33efff',
   },
   categoryButtonText: {
     fontSize: 14,
@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
     color: '#E5E7EB',
   },
   claimButton: {
-    backgroundColor: '#7291E1',
+    backgroundColor: '#33efff',
     paddingHorizontal: 16,
     paddingVertical: 8,
     borderRadius: 8,

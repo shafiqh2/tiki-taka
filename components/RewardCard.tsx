@@ -91,6 +91,6 @@ const styles = StyleSheet.create({
   pointsText: {
     fontSize: 12,
     fontWeight: '600',
-    color: '#7291E1',
+    color: '#33efff',
   },
 });

@@ -19,7 +19,7 @@ export default function GamesScreen() {
             title="Score Predictions" 
             description="Predict match outcomes and win points"
             icon={<Crown size={24} color="#FFFFFF" />}
-            color="#7291E1"
+            color="#33efff"
             isDark={isDark}
           />
           <GameCard 
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
   viewMoreText: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#7291E1',
+    color: '#33efff',
   },
   upcomingChallengesSection: {
     marginTop: 24,
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   joinChallengeButton: {
-    backgroundColor: '#7291E1',
+    backgroundColor: '#33efff',
     paddingVertical: 10,
     borderRadius: 8,
     alignItems: 'center',

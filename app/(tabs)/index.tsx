@@ -1,6 +1,22 @@
 import { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, FlatList } from 'react-native';
-import { Bell, ChevronDown, Trophy, Users, Timer, ChevronRight } from 'lucide-react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+  FlatList,
+} from 'react-native';
+import {
+  Bell,
+  ChevronDown,
+  Trophy,
+  Users,
+  Timer,
+  ChevronRight,
+} from 'lucide-react-native';
+import GradientBackground from '../../components/GradientBackground';
 import { StatusBar } from 'expo-status-bar';
 
 export default function HomeScreen() {
@@ -8,14 +24,14 @@ export default function HomeScreen() {
 
   useEffect(() => {
     const matchTime = new Date('2024-03-10T20:00:00Z');
-    
+
     const updateTimer = () => {
       const now = new Date();
       const diff = matchTime.getTime() - now.getTime();
-      
+
       const hours = Math.floor(diff / (1000 * 60 * 60));
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      
+
       setTimeLeft(`${hours}h ${minutes}m`);
     };
 
@@ -26,8 +42,8 @@ export default function HomeScreen() {
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <StatusBar style="light" />
-      
+      <StatusBar style="light" backgroundColor="#121212" translucent={false} />
+
       {/* Header */}
       <View style={styles.header}>
         <View>
@@ -39,7 +55,9 @@ export default function HomeScreen() {
             <View style={styles.notificationBadge} />
           </TouchableOpacity>
           <Image
-            source={{ uri: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg' }}
+            source={{
+              uri: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg',
+            }}
             style={styles.avatar}
           />
         </View>
@@ -57,7 +75,9 @@ export default function HomeScreen() {
         <View style={styles.matchDetails}>
           <View style={styles.team}>
             <Image
-              source={{ uri: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Manchester_City_FC_badge.svg/100px-Manchester_City_FC_badge.png' }}
+              source={{
+                uri: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Manchester_City_FC_badge.svg/100px-Manchester_City_FC_badge.png',
+              }}
               style={styles.teamLogo}
             />
             <Text style={styles.teamName}>Man City</Text>
@@ -71,15 +91,19 @@ export default function HomeScreen() {
           </View>
           <View style={styles.team}>
             <Image
-              source={{ uri: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/53/Arsenal_FC.svg/100px-Arsenal_FC.png' }}
+              source={{
+                uri: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/53/Arsenal_FC.svg/100px-Arsenal_FC.png',
+              }}
               style={styles.teamLogo}
             />
             <Text style={styles.teamName}>Arsenal</Text>
           </View>
         </View>
-        <TouchableOpacity style={styles.predictButton}>
-          <Text style={styles.predictButtonText}>Predict Now</Text>
-        </TouchableOpacity>
+        <GradientBackground>
+          <TouchableOpacity style={styles.predictButton}>
+            <Text style={styles.predictButtonText}>Predict Now</Text>
+          </TouchableOpacity>
+        </GradientBackground>
       </TouchableOpacity>
 
       {/* Latest News */}
@@ -88,14 +112,16 @@ export default function HomeScreen() {
           <Text style={styles.sectionTitle}>Latest News</Text>
           <TouchableOpacity style={styles.viewAllButton}>
             <Text style={styles.viewAllText}>View All</Text>
-            <ChevronRight size={16} color="#7291E1" />
+            <ChevronRight size={16} color="#33efff" />
           </TouchableOpacity>
         </View>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {[1, 2, 3].map((item) => (
             <TouchableOpacity key={item} style={styles.newsCard}>
               <Image
-                source={{ uri: 'https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg' }}
+                source={{
+                  uri: 'https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg',
+                }}
                 style={styles.newsImage}
               />
               <View style={styles.newsContent}>
@@ -118,15 +144,19 @@ export default function HomeScreen() {
           <Text style={styles.sectionTitle}>Weekly Leaderboard</Text>
           <TouchableOpacity style={styles.viewAllButton}>
             <Text style={styles.viewAllText}>View All</Text>
-            <ChevronRight size={16} color="#7291E1" />
+            <ChevronRight size={16} color="#33efff" />
           </TouchableOpacity>
         </View>
         <View style={styles.leaderboard}>
           {[1, 2, 3].map((rank) => (
             <View key={rank} style={styles.leaderboardItem}>
-              <Text style={[styles.rank, rank === 1 && styles.firstRank]}>{rank}</Text>
+              <Text style={[styles.rank, rank === 1 && styles.firstRank]}>
+                {rank}
+              </Text>
               <Image
-                source={{ uri: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg' }}
+                source={{
+                  uri: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg',
+                }}
                 style={styles.leaderAvatar}
               />
               <Text style={styles.leaderName}>John Doe</Text>
@@ -143,11 +173,13 @@ export default function HomeScreen() {
           <TouchableOpacity style={styles.gameCard}>
             <Trophy size={24} color="#F59E0B" />
             <Text style={styles.gameTitle}>Daily Trivia</Text>
-            <Text style={styles.gameDescription}>Test your football knowledge</Text>
+            <Text style={styles.gameDescription}>
+              Test your football knowledge
+            </Text>
             <Text style={styles.playNow}>Play Now</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.gameCard}>
-            <Users size={24} color="#7291E1" />
+            <Users size={24} color="#33efff" />
             <Text style={styles.gameTitle}>Prediction Duel</Text>
             <Text style={styles.gameDescription}>Challenge other fans</Text>
             <Text style={styles.playNow}>Play Now</Text>
@@ -163,9 +195,11 @@ export default function HomeScreen() {
             <Text style={styles.activeUsers}>2.5K fans online</Text>
             <Text style={styles.discussions}>150 active discussions</Text>
           </View>
-          <TouchableOpacity style={styles.joinButton}>
-            <Text style={styles.joinButtonText}>Join Fan Zone</Text>
-          </TouchableOpacity>
+          <GradientBackground>
+            <TouchableOpacity style={styles.joinButton}>
+              <Text style={styles.joinButtonText}>Join Fan Zone</Text>
+            </TouchableOpacity>
+          </GradientBackground>
         </View>
       </View>
 
@@ -304,7 +338,7 @@ const styles = StyleSheet.create({
     marginLeft: 4,
   },
   predictButton: {
-    backgroundColor: '#7291E1',
+    fontSize: 18,
     paddingVertical: 12,
     borderRadius: 8,
     alignItems: 'center',
@@ -335,7 +369,7 @@ const styles = StyleSheet.create({
   },
   viewAllText: {
     fontSize: 14,
-    color: '#7291E1',
+    color: '#33efff',
     marginRight: 4,
   },
   newsCard: {
@@ -416,7 +450,7 @@ const styles = StyleSheet.create({
   points: {
     fontSize: 14,
     fontWeight: '600',
-    color: '#7291E1',
+    color: '#33efff',
   },
   gamesGrid: {
     flexDirection: 'row',
@@ -449,7 +483,7 @@ const styles = StyleSheet.create({
   playNow: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#7291E1',
+    color: '#33efff',
   },
   fanZone: {
     marginTop: 24,
@@ -479,7 +513,6 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
   },
   joinButton: {
-    backgroundColor: '#7291E1',
     paddingVertical: 12,
     borderRadius: 8,
     alignItems: 'center',

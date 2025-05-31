@@ -90,14 +90,14 @@ export default function ProfileScreen() {
           <View style={styles.settingCard}>
             <View style={styles.settingItem}>
               <View style={styles.settingIconContainer}>
-                <Bell size={20} color="#7291E1" />
+                <Bell size={20} color="#33efff" />
               </View>
               <Text style={styles.settingText}>Notifications</Text>
               <Switch
                 value={notificationsEnabled}
                 onValueChange={setNotificationsEnabled}
                 trackColor={{ false: '#D1D5DB', true: '#93C5FD' }}
-                thumbColor={notificationsEnabled ? '#7291E1' : '#F3F4F6'}
+                thumbColor={notificationsEnabled ? '#33efff' : '#F3F4F6'}
               />
             </View>
             
@@ -232,7 +232,7 @@ const styles = StyleSheet.create({
   },
   editText: {
     fontSize: 14,
-    color: '#7291E1',
+    color: '#33efff',
   },
   teamsScrollContent: {
     paddingRight: 16,
@@ -272,7 +272,7 @@ const styles = StyleSheet.create({
   addTeamText: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#7291E1',
+    color: '#33efff',
   },
   settingsSection: {
     marginBottom: 24,
