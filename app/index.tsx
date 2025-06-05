@@ -1,27 +1,38 @@
 import { useEffect } from 'react';
 import { Redirect } from 'expo-router';
-import { useAuth } from '../contexts/AuthContext';
-import { View, ActivityIndicator, StyleSheet } from 'react-native';
+import { Image, View, StyleSheet } from 'react-native';
 
 export default function Index() {
-  const { user, loading } = useAuth();
+  useEffect(() => {
+    // Simulate splash screen delay
+    const timer = setTimeout(() => {
+      // Redirect to tabs after splash screen
+      router.replace('/(tabs)');
+    }, 2000);
 
-  if (loading) {
-    return (
-      <View style={styles.container}>
-        <ActivityIndicator size="large" color="#33efff" />
-      </View>
-    );
-  }
+    return () => clearTimeout(timer);
+  }, []);
 
-  return user ? <Redirect href="/(tabs)" /> : <Redirect href="/auth/login" />;
+  return (
+    <View style={styles.container}>
+      <Image
+        source={require('../assets/images/splash.png')}
+        style={styles.logo}
+        resizeMode="contain"
+      />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#121212',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#121212',
+  },
+  logo: {
+    width: '60%',
+    height: '60%',
   },
 });

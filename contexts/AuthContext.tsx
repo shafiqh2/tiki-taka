@@ -17,6 +17,7 @@ interface AuthContextType {
   signOut: () => Promise<void>;
   userProfile: UserProfile | null;
   error: string | null;
+  isAuthenticated: boolean;
 }
 
 interface UserProfile {
@@ -33,6 +34,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     if (!auth) {
@@ -43,6 +45,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       setUser(user);
+      setIsAuthenticated(!!user);
+      
       if (user && database) {
         try {
           const profileRef = ref(database, `users/${user.uid}/profile`);
@@ -80,6 +84,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       };
 
       await set(ref(database, `users/${user.uid}/profile`), initialProfile);
+      setIsAuthenticated(true);
     } catch (e: any) {
       console.error('Sign up error:', e);
       setError(e.message || 'Failed to sign up');
@@ -94,6 +99,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         throw new Error('Firebase authentication is not initialized');
       }
       await signInWithEmailAndPassword(auth, email, password);
+      setIsAuthenticated(true);
     } catch (e: any) {
       console.error('Sign in error:', e);
       setError(e.message || 'Failed to sign in');
@@ -108,6 +114,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         throw new Error('Firebase authentication is not initialized');
       }
       await firebaseSignOut(auth);
+      setIsAuthenticated(false);
     } catch (e: any) {
       console.error('Sign out error:', e);
       setError(e.message || 'Failed to sign out');
@@ -123,7 +130,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       signUp, 
       signOut,
       userProfile,
-      error
+      error,
+      isAuthenticated
     }}>
       {children}
     </AuthContext.Provider>
