@@ -15,7 +15,7 @@ const firebaseConfig = {
 };
 
 // Only initialize Firebase if all required config values are present
-if (!firebaseConfig.apiKey || !firebaseConfig.authDomain || !firebaseConfig.projectId) {
+if (!firebaseConfig.apiKey || !firebaseConfig.authDomain || !firebaseConfig.projectId || !firebaseConfig.databaseURL) {
   throw new Error('Firebase configuration is incomplete. Please check your environment variables.');
 }
 
