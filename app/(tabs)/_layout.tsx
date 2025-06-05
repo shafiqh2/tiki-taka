@@ -2,9 +2,6 @@ import { Tabs } from 'expo-router';
 import { Home, Trophy, Gift, MessageSquare, User } from 'lucide-react-native';
 
 export default function TabLayout() {
-  // Force dark theme instead of using system color scheme
-  const isDark = true;
-
   return (
     <Tabs
       screenOptions={{
@@ -32,9 +29,9 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="games"
+        name="predict"
         options={{
-          title: 'Games',
+          title: 'Predict',
           tabBarIcon: ({ color, size }) => <Trophy size={size} color={color} />,
         }}
       />

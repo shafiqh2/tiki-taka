@@ -23,10 +23,6 @@ export default {
       bundleIdentifier: "com.yourcompany.footballfanhub"
     },
     android: {
-      adaptiveIcon: {
-        foregroundImage: "./assets/images/adaptive-icon.png",
-        backgroundColor: "#121212"
-      },
       package: "com.yourcompany.footballfanhub"
     },
     web: {
