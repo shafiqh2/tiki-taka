@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
-import { Redirect } from 'expo-router';
+import { useRouter, Redirect } from 'expo-router';
 import { Image, View, StyleSheet } from 'react-native';
 
 export default function Index() {
+  const router = useRouter();
+
   useEffect(() => {
     // Simulate splash screen delay
     const timer = setTimeout(() => {
@@ -11,7 +13,7 @@ export default function Index() {
     }, 2000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [router]);
 
   return (
     <View style={styles.container}>
