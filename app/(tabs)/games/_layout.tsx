@@ -27,6 +27,13 @@ export default function GamesLayout() {
           presentation: 'modal',
         }}
       />
+      <Stack.Screen
+        name="predict"
+        options={{
+          title: 'Score Prediction',
+          presentation: 'modal',
+        }}
+      />
     </Stack>
   );
 }
