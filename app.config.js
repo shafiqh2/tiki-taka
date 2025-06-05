@@ -1,47 +1,45 @@
 export default {
   expo: {
-    name: "Football Fan Hub",
-    slug: "football-fan-hub",
-    version: "1.0.0",
-    orientation: "portrait",
-    icon: "./assets/images/icon.png",
-    scheme: "myapp",
-    userInterfaceStyle: "dark",
+    name: 'Football Fan Hub',
+    slug: 'football-fan-hub',
+    version: '1.0.0',
+    orientation: 'portrait',
+    icon: './assets/images/icon.png',
+    scheme: 'myapp',
+    userInterfaceStyle: 'dark',
     splash: {
-      image: "./assets/images/splash.png",
-      resizeMode: "contain",
-      backgroundColor: "#121212"
+      image: './assets/images/splash.png',
+      resizeMode: 'contain',
+      backgroundColor: '#121212',
     },
     updates: {
-      fallbackToCacheTimeout: 0
+      fallbackToCacheTimeout: 0,
     },
-    assetBundlePatterns: [
-      "**/*"
-    ],
+    assetBundlePatterns: ['**/*'],
     ios: {
       supportsTablet: true,
-      bundleIdentifier: "com.yourcompany.footballfanhub"
+      bundleIdentifier: 'com.yourcompany.footballfanhub',
     },
     android: {
-      package: "com.yourcompany.footballfanhub"
+      package: 'com.yourcompany.footballfanhub',
     },
     web: {
-      bundler: "metro",
-      output: "single",
-      favicon: "./assets/images/favicon.png"
+      bundler: 'metro',
+      output: 'single',
+      favicon: './assets/images/favicon.png',
     },
     extra: {
-      firebaseApiKey: process.env.EXPO_PUBLIC_FIREBASE_API_KEY,
-      firebaseAuthDomain: process.env.EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN,
-      firebaseProjectId: process.env.EXPO_PUBLIC_FIREBASE_PROJECT_ID,
-      firebaseStorageBucket: process.env.EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET,
-      firebaseMessagingSenderId: process.env.EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-      firebaseAppId: process.env.EXPO_PUBLIC_FIREBASE_APP_ID,
-      firebaseDatabaseUrl: process.env.EXPO_PUBLIC_FIREBASE_DATABASE_URL,
+      apiKey: process.env.EXPO_PUBLIC_FIREBASE_API_KEY,
+      authDomain: process.env.EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN,
+      projectId: process.env.EXPO_PUBLIC_FIREBASE_PROJECT_ID,
+      storageBucket: process.env.EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET,
+      messagingSenderId: process.env.EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+      appId: process.env.EXPO_PUBLIC_FIREBASE_APP_ID,
+      measurementId: process.env.EXPO_PUBLIC_FIREBASE_MEASUREMENT_ID,
       eas: {
-        projectId: "your-project-id"
-      }
+        projectId: 'your-project-id',
+      },
     },
-    plugins: ["expo-router"]
-  }
+    plugins: ['expo-router'],
+  },
 };

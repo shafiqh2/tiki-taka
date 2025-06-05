@@ -11,12 +11,18 @@ const firebaseConfig = {
   storageBucket: Constants.expoConfig?.extra?.firebaseStorageBucket,
   messagingSenderId: Constants.expoConfig?.extra?.firebaseMessagingSenderId,
   appId: Constants.expoConfig?.extra?.firebaseAppId,
-  databaseURL: Constants.expoConfig?.extra?.firebaseDatabaseUrl
+  databaseURL: Constants.expoConfig?.extra?.firebaseDatabaseUrl,
 };
 
 // Only initialize Firebase if all required config values are present
-if (!firebaseConfig.apiKey || !firebaseConfig.authDomain || !firebaseConfig.projectId || !firebaseConfig.databaseURL) {
-  throw new Error('Firebase configuration is incomplete. Please check your environment variables.');
+if (
+  !firebaseConfig.apiKey ||
+  !firebaseConfig.authDomain ||
+  !firebaseConfig.projectId
+) {
+  throw new Error(
+    'Firebase configuration is incomplete. Please check your environment variables.'
+  );
 }
 
 const app = initializeApp(firebaseConfig);
