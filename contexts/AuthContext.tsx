@@ -16,6 +16,7 @@ interface AuthContextType {
   signUp: (email: string, password: string, name: string) => Promise<void>;
   signOut: () => Promise<void>;
   userProfile: UserProfile | null;
+  error: string | null;
 }
 
 interface UserProfile {
@@ -31,15 +32,27 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    if (!auth) {
+      setError('Firebase authentication is not initialized');
+      setLoading(false);
+      return;
+    }
+
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       setUser(user);
-      if (user) {
-        const profileRef = ref(database, `users/${user.uid}/profile`);
-        const snapshot = await get(profileRef);
-        if (snapshot.exists()) {
-          setUserProfile(snapshot.val());
+      if (user && database) {
+        try {
+          const profileRef = ref(database, `users/${user.uid}/profile`);
+          const snapshot = await get(profileRef);
+          if (snapshot.exists()) {
+            setUserProfile(snapshot.val());
+          }
+        } catch (e) {
+          console.error('Error fetching user profile:', e);
+          setError('Failed to fetch user profile');
         }
       } else {
         setUserProfile(null);
@@ -51,25 +64,55 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const signUp = async (email: string, password: string, name: string) => {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    const user = userCredential.user;
-    
-    const initialProfile: UserProfile = {
-      name,
-      points: 0,
-      quizHistory: [],
-      rewardHistory: []
-    };
+    try {
+      setError(null);
+      if (!auth || !database) {
+        throw new Error('Firebase services are not initialized');
+      }
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      
+      const initialProfile: UserProfile = {
+        name,
+        points: 0,
+        quizHistory: [],
+        rewardHistory: []
+      };
 
-    await set(ref(database, `users/${user.uid}/profile`), initialProfile);
+      await set(ref(database, `users/${user.uid}/profile`), initialProfile);
+    } catch (e: any) {
+      console.error('Sign up error:', e);
+      setError(e.message || 'Failed to sign up');
+      throw e;
+    }
   };
 
   const signIn = async (email: string, password: string) => {
-    await signInWithEmailAndPassword(auth, email, password);
+    try {
+      setError(null);
+      if (!auth) {
+        throw new Error('Firebase authentication is not initialized');
+      }
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (e: any) {
+      console.error('Sign in error:', e);
+      setError(e.message || 'Failed to sign in');
+      throw e;
+    }
   };
 
   const signOut = async () => {
-    await firebaseSignOut(auth);
+    try {
+      setError(null);
+      if (!auth) {
+        throw new Error('Firebase authentication is not initialized');
+      }
+      await firebaseSignOut(auth);
+    } catch (e: any) {
+      console.error('Sign out error:', e);
+      setError(e.message || 'Failed to sign out');
+      throw e;
+    }
   };
 
   return (
@@ -79,7 +122,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       signIn, 
       signUp, 
       signOut,
-      userProfile
+      userProfile,
+      error
     }}>
       {children}
     </AuthContext.Provider>
