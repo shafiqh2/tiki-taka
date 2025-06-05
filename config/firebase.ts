@@ -14,6 +14,11 @@ const firebaseConfig = {
   databaseURL: Constants.expoConfig?.extra?.firebaseDatabaseUrl
 };
 
+// Only initialize Firebase if all required config values are present
+if (!firebaseConfig.apiKey || !firebaseConfig.authDomain || !firebaseConfig.projectId) {
+  throw new Error('Firebase configuration is incomplete. Please check your environment variables.');
+}
+
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const database = getDatabase(app);
