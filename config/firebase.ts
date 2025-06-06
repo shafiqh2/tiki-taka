@@ -5,13 +5,13 @@ import Constants from 'expo-constants';
 
 // Get Firebase config from Constants.expoConfig.extra
 const firebaseConfig = {
-  apiKey: Constants.expoConfig?.extra?.firebaseApiKey,
-  authDomain: Constants.expoConfig?.extra?.firebaseAuthDomain,
-  projectId: Constants.expoConfig?.extra?.firebaseProjectId,
-  storageBucket: Constants.expoConfig?.extra?.firebaseStorageBucket,
-  messagingSenderId: Constants.expoConfig?.extra?.firebaseMessagingSenderId,
-  appId: Constants.expoConfig?.extra?.firebaseAppId,
-  databaseURL: Constants.expoConfig?.extra?.firebaseDatabaseUrl,
+  apiKey: Constants.expoConfig?.extra?.apiKey,
+  authDomain: Constants.expoConfig?.extra?.authDomain,
+  projectId: Constants.expoConfig?.extra?.projectId,
+  storageBucket: Constants.expoConfig?.extra?.storageBucket,
+  messagingSenderId: Constants.expoConfig?.extra?.messagingSenderId,
+  appId: Constants.expoConfig?.extra?.appId,
+  databaseURL: Constants.expoConfig?.extra?.databaseURL,
 };
 
 // Only initialize Firebase if all required config values are present
